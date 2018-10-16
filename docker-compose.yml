@@ -1,34 +1,24 @@
-nginx:
-  build: images/nginx
-  command: nginx -g "daemon off;"
-  links:
-  - php
-  ports:
-  - "80:80"
-php:
-  build: images/php
-  volumes:
-  - ./images/php:/var/www/html
-  working_dir: /var/www/html/app/public
-  command: php-fpm
-  links:
-  - cache
-  ports:
-  - "9000:9000"
-  environment:
-    APP_ENV: local
-    APP_DEBUG: 'true'
-    APP_KEY: 123456
-    APP_LOCALE: en
-    APP_FALLBACK_LOCALE: en
-    DB_CONNECTION=pgsql
-    DB_HOST=202.152.63.245
-    DB_PORT=9370
-    DB_DATABASE=Customer
-    DB_SCHEMA=Customer
-    DB_USERNAME=postgres
-    DB_PASSWORD=J0k0W1d0d0
-    MEMCACHED_HOST: cache
-    CACHE_DRIVER: memcached
-cache:
-  image: memcached
+version: '2'
+services:
+
+  # The Web Server
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    working_dir: /var/www
+    volumes_from:
+      - app
+    ports:
+    - 90:90
+
+  # The Application
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+    - ./:/var/www
+
+

@@ -78,7 +78,7 @@ class CustomersController  extends Controller
 
     }
 
-    public function deleteCustomer($id){
+        public function deleteCustomer($id){
         $customer=Customers::find($id);
         $customer->delete();
 
