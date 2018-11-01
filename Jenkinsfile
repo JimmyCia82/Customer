@@ -6,7 +6,6 @@ node{
     environment {
         PATH = "C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"
 
-        stages {
             stage('Prepare') {
                 steps {
                     sh 'composer install'
@@ -22,6 +21,6 @@ node{
                 // using the built-in pipeline command
                 deleteDir()
             }
-        }
+        
     }
 }
