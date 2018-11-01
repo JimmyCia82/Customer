@@ -1,9 +1,6 @@
 node{
     agent any
 
-    import jenkins.model.*
-    jenkins = Jenkins.instance
-
     def app
 
     environment {
@@ -17,12 +14,6 @@ node{
             }
             stage('Build'){
                 app = docker.build("test-image", "-f app1.dockerfile .").withRun('-p 8092:80')
-            }
-
-            stage('cleanup') {
-                // Recursively delete all files and folders in the workspace
-                // using the built-in pipeline command
-                deleteDir()
             }
 
     }
