@@ -1,6 +1,9 @@
 node{
     agent any
 
+    import jenkins.model.*
+    jenkins = Jenkins.instance
+
     def app
 
     environment {
@@ -21,6 +24,6 @@ node{
                 // using the built-in pipeline command
                 deleteDir()
             }
-        
+
     }
 }
