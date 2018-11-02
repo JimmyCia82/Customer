@@ -1,10 +1,9 @@
 pipeline{
     agent any
 
-    def app
-
     environment {
         PATH = "C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"
+        def app
         stages{
             stage('Prepare') {
                     sh 'composer install'
