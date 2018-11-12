@@ -11,7 +11,7 @@ pipeline{
             stage('Prepare') {
 
                 steps{
-                    withEnv(env.PATH) {
+                    withEnv(["PATH = C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"]) {
                         sh 'composer install'
                         sh 'vendor/bin/phpunit'
                     }
