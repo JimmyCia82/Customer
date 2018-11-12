@@ -15,7 +15,8 @@ pipeline{
             }
             stage('Build'){
                 steps{
-                    app = docker.build("test-image", "-f app1.dockerfile .").withRun('-p 8092:80')
+                    echo 'Hello World'
+                    //app = docker.build("test-image", "-f app1.dockerfile .").withRun('-p 8092:80')
                 }
             }
         }
