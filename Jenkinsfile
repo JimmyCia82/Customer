@@ -11,10 +11,10 @@ pipeline{
             stage('Prepare') {
 
                 steps{
-
+                    withEnv(${env.PATH}) {
                         sh 'composer install'
                         sh 'vendor/bin/phpunit'
-
+                    }
                 }
             }
             stage('Build'){
